@@ -48,3 +48,19 @@ CVE consumers should expect to see SADP containers provided by the pilot partici
 | HeroDevs | .NET 6, others? | |
 | Microsoft | chromium, others? | |
 | Red Hat | lots of managed software packages | |
+
+## Questions
+
+We both know some questions in advance, and we expect new questions and experience to arise from running the pilot.
+
+Q1. Can I be and ADP? How do I become an ADP?
+
+Q2. There really is a lot of software reuse and dependency. How will CVE manage all that information, technically and procedurally?
+
+Q3. The pilot was a failure, but we added content to the production CVE corpus. How do we roll back?
+
+Q4. A big assumption behind VEX and SADP is that consumers of (CVE) dependency-related vulnerability information can and will use that information to improve vulnerability scanning results. For example, in downstream software, a scanner detects a version of an upstream library with a known vulnerability. Lacking further information, the scanner returns a positive (vulnerable) result. But if the scanner consumes SADP information that conveys that the downstream use of the library is not vulnerable (or not exploitable), then the scanner returns a negative (not vulnerable) result. Signal to noise ratio improved! So, is this assumption valid? What do vulnerability scanners think? What about other defenders who scan, either rolling their own or as users of scanning products?
+
+Q5. How do we measure the results (success, failure)?
+
+Q6. Should the CVE Program shift the SADP pilot into full production? How does the Program make this decision?
