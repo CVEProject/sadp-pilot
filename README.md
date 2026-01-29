@@ -76,23 +76,25 @@ Q1: Can I be and ADP? How do I become an ADP?
 
 A1: This pilot is limited in scope to Supplier ADPs. If you are a Supplier CNA and wish to participate in the SADP pilot, we may be able to add you during the pilot period. The Program plans to consider and test other types of ADPs, for example, "enrichment" ADPs such as [CISA Vulnrichment](https://github.com/cisagov/vulnrichment) and the CVE Program [references ADP](https://github.com/CVEProject/cvelistV5/blob/main/README.md#cve-program-container). There is currently no general purpose or Program-wide policy or criteria about ADPs.
 
-Q2. There really is a lot of software reuse and dependency. How will CVE manage all that information, technically and procedurally?
+Q2: There really is a lot of software reuse and dependency. How will CVE manage all that information, technically and procedurally?
 
-Q3. The pilot was a failure, but we added content to the production CVE corpus. How do we roll back?
+Q3: The pilot was a failure, but we added content to the production CVE corpus. How do we roll back?
 
-[Q4](#q4). A big assumption behind VEX and SADP is that consumers of (CVE) dependency-related vulnerability information can and will use that information to improve vulnerability scanning results. For example, in downstream software, a scanner detects a version of an upstream library with a known vulnerability. Lacking further information, the scanner returns a positive (vulnerable) result. But if the scanner consumes SADP information that conveys that the downstream use of the library is not vulnerable (or not exploitable), then the scanner returns a negative (not vulnerable) result. Signal to noise ratio improved! So, is this assumption valid? What do vulnerability scanners think? What about other defenders who scan, either rolling their own or as users of scanning products?
+A3: See #1.
 
-Q5. How do we measure the results (success, failure)?
+<a name="q4">Q4</a>: A big assumption behind VEX and SADP is that consumers of (CVE) dependency-related vulnerability information can and will use that information to improve vulnerability scanning results. For example, in downstream software, a scanner detects a version of an upstream library with a known vulnerability. Lacking further information, the scanner returns a positive (vulnerable) result. But if the scanner consumes SADP information that conveys that the downstream use of the library is not vulnerable (or not exploitable), then the scanner returns a negative (not vulnerable) result. Signal to noise ratio improved! So, is this assumption valid? What do vulnerability scanners think? What about other defenders who scan, either rolling their own or as users of scanning products?
 
-Q6. Should the CVE Program shift the SADP pilot into full production? How does the Program make this decision?
+Q5: How do we measure the results (success, failure)?
 
-Q7. How long will the Pilot run?
+Q6: Should the CVE Program shift the SADP pilot into full production? How does the Program make this decision?
 
-A7. Estimates: Test period in February and March 2026, production for ~four months, then a formal review leading to a decision whether and how to continue.
+Q7: How long will the Pilot run?
 
-Q8. How do I know if a CVE Record has SADP information?
+A7: Estimates: Test period in February and March 2026, production for ~four months, then a formal review leading to a decision whether and how to continue.
 
-A8. First, check the Record for an ADP container of [`"x_adpType": "supplier"`](https://github.com/CVEProject/sadp-pilot/blob/740d3bd121dbd1b92ca3c16eb65dd749bb62914b/CVE-2025-14174_sadp.json#L61) (and/or [`shortName` ends with `-SADP`](https://github.com/CVEProject/sadp-pilot/blob/740d3bd121dbd1b92ca3c16eb65dd749bb62914b/CVE-2025-14174_sadp.json#L125)). Second, we plan to provide a running list of CVE IDs that have SADP containers.
+Q8: How do I know if a CVE Record has SADP information?
+
+A8: First, check the Record for an ADP container of [`"x_adpType": "supplier"`](https://github.com/CVEProject/sadp-pilot/blob/740d3bd121dbd1b92ca3c16eb65dd749bb62914b/CVE-2025-14174_sadp.json#L61) (and/or [`shortName` ends with `-SADP`](https://github.com/CVEProject/sadp-pilot/blob/740d3bd121dbd1b92ca3c16eb65dd749bb62914b/CVE-2025-14174_sadp.json#L125)). Second, we plan to provide a running list of CVE IDs that have SADP containers.
 
 ## References
 
