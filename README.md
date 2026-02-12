@@ -8,7 +8,7 @@ This repository documents the Supplier-as-ADP Pilot project. This README and oth
 
 Subject to change.
 
-Test environment available in early February 2026.
+Test environment is available: https://cveawg-adp-test.mitre.org/api/.
 
 SADP in production sometime in March 2026.
 
@@ -39,19 +39,60 @@ If an ADP container type (and/or `shortName`) indicates Supplier, then the Produ
 `containers.adp[].providerMetadata`
 
 `containers.adp[].providerMetadata.x_adpType` with the value: `supplier`.  This would require a future CVE Record Format change and would support other types of ADP such as `enricher`. Another option is to overload `.containers.adp.providerMetadata.shortName` with a string like `"${shortName}-SADP"`.
+
 #### Product Status
 
 `containers.adp[].affected`
 
 #### Product Status Reference
 
-As an alternative to providing product status within the their container, an SADP MAY instead provide a reference to external product status. The format of this reference has not been determined yet. One simple option is a reference URL with a new type (add example). It may be better, or even necessary, to develop a more robust reference schema, more aligned with this [RFD about assertions](https://github.com/CVEProject/cve-schema/pull/472) (add example).
+As an alternative to providing product status (and other SADP information) within the their container, an SADP MAY instead provide a reference to external product status. The format of this reference has not been determined yet. Ideally, the external content would be machine readable, for example, CSAF VEX, OpenVEX or CVE Record Format.
+
+One simple option is a reference URL with a new type, for example:
+
+`.containers.adp[].references`
+
+```json
+
+"references": [
+  {
+    "url": "https://msrc.microsoft.com/csaf/vex/2025/msrc_cve-2025-14174.json",
+      "tags": [
+      "x_sadp-csaf-vex"
+      ]
+  }
+]
+```
+
+New tags could be: `x_sadp-csaf-vex`, `x_sadp-openvex`, `x_sadp-cve`. Perhaps the `x_sadp-` prefix is unnecesasary?
+
+It may be better, or even necessary, to develop a more robust reference schema, more aligned with this [RFD about assertions](https://github.com/CVEProject/cve-schema/pull/472), for example:
+
+`.containers.adp[]`
+
+```json
+"x_adpReference": [
+  {
+    "url": "https://msrc.microsoft.com/csaf/vex/2025/msrc_cve-2025-14174.json",
+    "format": "csaf-vex",
+    "definition": {
+      "url": "https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json",
+      "namespace": "csaf",
+      "version": "2.0"
+    }
+  }
+]
+```
+
+Similar to the tags in the basic URL reference, `format` could be: `csaf-vex`, `openvex`, `cve`. 
+
+Note: Consider the [Assertion Framework](https://github.com/jayjacobs/cve-schema/blob/main/rfds/0000-assertion-framework.md) and Vulnerability Relationships RFDs. Also note [this issue](https://github.com/CVEProject/cve-schema/issues/318) to move away from using `x_`, although at the moment `x_` seems to be the only practical option. Any `x_` fields or values will be proposed as official CVE Record Format schema changes (removing the `x_`).
 
 ## Optional SADP Information
 
 An SADP MAY populate any other elements of an ADP container. One goal of the pilot is to determine if any elements cause confusion or conflict with other information in a Record, especially elements of the CNA container. CVSS, for example, [is designed to be reassessed in downstream uses](https://www.first.org/cvss/user-guide#Assessing-Vulnerabilities-in-Software-Libraries-and-Similar2:~:text=When%20assessing%20a%20vulnerability%20in%20a%20given%20implementation%20using%20the%20impacted%20library%2C%20the%20metric%20values%20must%20be%20re%2Dassessed%20for%20that%20specific%20implementation%2E), particularly for Products such as libraries and operating system kernels.
 
-## JSON Reference
+## JSON Reference Example
 
 Here ([CVE-2025-14174](https://github.com/CVEProject/sadp-pilot/blob/main/CVE-2025-14174_sadp.json)) is an manually generated example CVE Record with an SADP container. Look for `x_` field names.
 
@@ -67,7 +108,7 @@ CVE consumers should expect to see SADP containers provided by these Supplier pa
 | Microsoft | chromium, others? | |
 | Red Hat | lots of managed software packages | |
 | Oracle | ? | |
-| Siemens | ? | CVE-1900-1234 |
+| Siemens | ? | CVE-2025-51591 |
 
 In addition to these primary SADP content producers (downstream Suppliers), we have discussed SADP with upstream Suppliers and institutional CVE consumers, specifically vulnerability scanners (see [Q4](#q4)). We should also talk to vulnerability scanner users. We may solicit active participation from these types of organizations to help determine if SADP is useful (or harmful) and if changes are needed.
 
