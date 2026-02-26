@@ -58,7 +58,7 @@ One simple option is a reference URL with a new type, for example:
 
 "references": [
   {
-    "url": "https://msrc.microsoft.com/csaf/vex/2025/msrc_cve-2025-14174.json",
+    "url": "https://msrc.microsoft.example.com/csaf/vex/2025/msrc_cve-2025-14174.json",
       "tags": [
       "x_sadp-csaf-vex"
       ]
@@ -75,7 +75,7 @@ It may be better, or even necessary, to develop a more robust reference schema, 
 ```json
 "x_adpReference": [
   {
-    "url": "https://msrc.microsoft.com/csaf/vex/2025/msrc_cve-2025-14174.json",
+    "url": "https://msrc.microsoft.example.com/csaf/vex/2025/msrc_cve-2025-14174.json",
     "format": "csaf-vex",
     "definition": {
       "url": "https://github.com/oasis-tcs/csaf/blob/master/csaf_2.0/json_schema/csaf_json_schema.json",
