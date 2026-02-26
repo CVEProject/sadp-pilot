@@ -96,7 +96,7 @@ An SADP MAY populate any other elements of an ADP container. One goal of the pil
 
 ## JSON Reference Example
 
-Here ([CVE-2025-14174](https://github.com/CVEProject/sadp-pilot/blob/main/CVE-2025-14174_sadp.json)) is an manually generated example CVE Record with an SADP container. Look for `x_` field names.
+Here ([CVE-2025-14174](https://github.com/CVEProject/sadp-pilot/blob/main/CVE-2025-14174_sadp_example.json)) is an manually generated example CVE Record with an SADP container. Look for `x_` field names.
 
 ## Participants and Scope
 
