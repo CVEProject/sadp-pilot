@@ -1,0 +1,75 @@
+name: Update SADP CVEs
+
+on:
+  # repository_dispatch:
+  #   types: [source_repo_updated]
+  
+  # run every 5~10 minutes (min Github scheduling allowed)
+  schedule:
+    - cron: '*/5 * * * *'
+
+  # enable manual exec
+  workflow_dispatch:
+    inputs:
+      params:
+        description: 'command line arguments'
+        required: false
+        default: ''
+
+jobs:
+  process-change:
+    runs-on: ubuntu-latest
+    steps:
+      # useful for debugging repository_dispatch, but we're not using that right now
+      # - name: Log Payload
+      #   run: |
+      #     echo "Received update from source!"
+      #     echo "Commit SHA: ${{ github.event.client_payload.sha }}"
+      #     echo "Message: ${{ github.event.client_payload.message }}"
+          
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+          
+      - name: Setup Node to specific version
+        uses: actions/setup-node@v3
+        with:
+          node-version: 24
+          
+      - name: Install cve-cli
+        run: |
+          pwd
+          # ls -al
+          tar -xzvf .github/workflows/cve-cli-0.0.2-rc5.tgz
+          cd package
+          npm install
+          
+      - name: Run cve-cli
+        run: |
+          pwd
+          # copy all code to root directory
+          cp -a ./package/. .
+          ls -al
+          # run date to get timestamp and cve-cli version info
+          NODE_CONFIG_ENV=sadp ./bin/run.js date -v
+
+          # update repository using deltalog and cvelistV5
+          NODE_CONFIG_ENV=sadp ./bin/run.js cvelist update --sourceCvelist
+          
+          # echo "downloads:"
+          # ls -alR downloads && ls -R downloads | grep CVE- | wc -l
+          # echo "cves.sadp:"
+          # ls -alR cves.sadp && ls -R cves.sadp | grep CVE- | wc -l
+
+          git config --global user.email "github_action@example.com"
+          git config --global user.name "cvelist update Github Action"
+          git add cves.sadp
+          git status
+
+          if git diff --cached --quiet; then
+            echo "No changes in cves.sadp; skipping commit/push."
+          else
+            git commit -m 'updated SADP to cves.sadp'
+            git push
+          fi
