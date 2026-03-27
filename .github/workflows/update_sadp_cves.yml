@@ -64,12 +64,12 @@ jobs:
 
           git config --global user.email "github_action@example.com"
           git config --global user.name "cvelist update Github Action"
-          git add cves.sadp
+          git add "Published SADP Records"
           git status
 
           if git diff --cached --quiet; then
-            echo "No changes in cves.sadp; skipping commit/push."
+            echo "No changes in "Published SADP Records"; skipping commit/push."
           else
-            git commit -m 'updated SADP to cves.sadp'
+            git commit -m 'updated "Published SADP Records"'
             git push
           fi
