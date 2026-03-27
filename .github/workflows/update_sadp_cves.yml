@@ -41,7 +41,7 @@ jobs:
         run: |
           pwd
           # ls -al
-          tar -xzvf .github/workflows/cve-cli-0.0.2-rc5.tgz
+          tar -xzvf .github/workflows/cve-cli-0.0.2-rc6.tgz
           cd package
           npm install
           
