@@ -2,19 +2,28 @@
 
 ## Summary
 
-This repository documents the Supplier-as-ADP Pilot project. This README and other documentation should be considered works-in-progress and are likely to be incomplete.
+This repository extends discussion of the Supplier-as-ADP Pilot project as described [here](https://www.cve.org/Media/News/item/blog/2026/03/24/Supplier-ADP-Pilot). (This README and other documentation should be considered works-in-progress and are likely to be incomplete.)
 
 ## Status and Schedule
 
-Subject to change.
+As of 4/1/2026, the CVE SADP Pilot has entered the PRODUCTION phase of the pilot (i.e, Phase II).  During this phase "Suppliers" will be enriching CVE Records in the official CVE List, adding information noting how their products are affected by these vulnerabilities.       This information will be available in two places for public review:
 
-Test environment is available: https://cveawg-adp-test.mitre.org/api/.
+* [The official CVE List](https://github.com/CVEProject/cvelistV5).   SADP information will be published as ADP "containers" in existing CVE Records.  SADP containers can be identfied in the JSON data structure by noting the following fields:
+   * `containers.adp[].providerMetadata.x_adpType` field with the value: `supplier`.
+   * the `shortName` field will have the value `xxxx-SADP` where xxxx is the name of the Supplier. 
 
-SADP in production sometime in March 2026.
+* [Published SADP Records](https://github.com/CVEProject/sadp-pilot/tree/main/Published%20SADP%20Records).  Records containing SADP content will be copied from the CVE List into this folder for easier identification.   The folder will be structured in the same manner as the CVE List, populated only by  CVE Records containing SADP content.
 
-"Formally" review the pilot in July 2026. This period would catch April and July quarterly update cycles and four monthly update cycles.
+Phase II is scheduled to run from April 1, 2026 until July 31, 2026.  This period will catch April and July quarterly update cycles and four monthly update cycles for the Suppliers. 
 
-This formal review should support a Program decision whether and how to continue SADP.
+After Phase II (i.e., August/2026) public feedback from the pilot will be reviewed and the "next steps" of the pilot will be considered.  
+
+## Offering Feedback for the SADP Pilot
+
+There are multiple ways to offer feedback on the pilot:
+* Submit a [New Issue](https://github.com/CVEProject/sadp-pilot/issues/new) against this Github SADP Repository
+* Submit [a comment](https://medium.com/@cve_program/supplier-adp-pilot-cve-program-to-explore-benefits-of-supporting-vex-like-product-status-852587bc9546) in response to the SADP announcement blog
+* Submit a [CVE Request](https://cveform.mitre.org/) using the CVE Program CVE Request form (use the "Other" request type from the pull down menu)
 
 ## Background
 
@@ -24,11 +33,10 @@ One expected use case is that vulnerability scanning and management could be imp
 
 ## Test CVE Services SADP Pilot Environment
 
-Participating SADPs will have accounts and credentials for a test environment. The instance will use production data and sync roughly daily. SADPs will only be permitted to [add (PUT) SADP information](https://cveawg.mitre.org/api-docs/#/CVE%20Record/cveAdpUpdateSingle) to existing CVE Records and manage users for their SADP organizations.   A snapshot of test CVE Records that have been created by pilot participatns will be taken daily (on weekdays) and posted [here](https://github.com/CVEProject/sadp-pilot/tree/main/SADP_Records).   
+As of 4/1/2026, the SADP Pilot has moved into PRODUCTION (i.e, Phase II, see above).  This means that viewable SADP information will now be found as part of the [official CVE List](https://github.com/CVEProject/cvelistV5) (and copied [here](https://github.com/CVEProject/sadp-pilot/tree/main/Published%20SADP%20Records) for easier public review). 
 
-Note that SADP information in this repository are for test purposes only and will NOT be available in the [official CVE List](https://github.com/CVEProject/cvelistV5/tree/main/cves).
+A "test environment" will continue to be available for prospective Supplier pilot participants to test their infrastructure however,  their test data will no longer be copied in the SADP Records Github repository as done in Phase I.   Historic Phase I SADP test data is now available in an [Archved Pilot Data](https://github.com/CVEProject/sadp-pilot/tree/main/Archived%20Pilot%20Data) 
 
-We have not yet decided when (or even if) to shift from the test to production environments, but the plan is to shift the pilot to production. Before providing production SADP information, participants MUST demonstrate their capability in the test environment.
 
 ## Required SADP Information
 
@@ -111,6 +119,7 @@ CVE consumers should expect to see SADP containers provided by these Supplier pa
 | Red Hat | lots of managed software packages | [CVE-2026-23074](https://cveawg-adp-test.mitre.org/api/cve/CVE-2026-23074) |
 | Oracle | ? | |
 | Siemens | ? | [CVE-2025-51591](https://cveawg-adp-test.mitre.org/api/cve/CVE-2025-51591) |
+| Cisco   | ? | |
 
 In addition to these primary SADP content producers (downstream Suppliers), we have discussed SADP with upstream Suppliers and institutional CVE consumers, specifically vulnerability scanners (see [Q4](#q4)). We should also talk to vulnerability scanner users. We may solicit active participation from these types of organizations to help determine if SADP is useful (or harmful) and if changes are needed.
 
