@@ -1,1 +1,1 @@
-This folder will contain copies of CVE Records with SADP enriched data during Phase II of the CVE SADP Pilot.  It is structured in the same manner as the  the official [CVE List](https://github.com/CVEProject/cvelistV5/tree/main/cves), but will onlycontain the CVE Records with SADP data.
+This folder will contain copies of CVE Records with SADP enriched data during Phase II of the CVE SADP Pilot.  It is structured in the same manner as the  the official [CVE List](https://github.com/CVEProject/cvelistV5/tree/main/cves), but will only contain the CVE Records with SADP data.
