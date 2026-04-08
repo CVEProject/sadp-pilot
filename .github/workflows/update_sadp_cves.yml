@@ -52,10 +52,14 @@ jobs:
           cp -a ./package/. .
           ls -al
           # run date to get timestamp and cve-cli version info
-          NODE_CONFIG_ENV=sadp ./bin/run.js date -v
+          NODE_CONFIG_ENV=sadp \
+          NODE_CONFIG_DIR=./.github/workflows/config \
+            ./bin/run.js date -v
 
           # update repository using deltalog and cvelistV5
-          NODE_CONFIG_ENV=sadp ./bin/run.js cvelist update --sourceCvelist
+          NODE_CONFIG_ENV=sadp \
+          NODE_CONFIG_DIR=./.github/workflows/config \
+            ./bin/run.js cvelist update --sourceCvelist
           
           # echo "downloads:"
           # ls -alR downloads && ls -R downloads | grep CVE- | wc -l
