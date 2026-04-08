@@ -1,0 +1,24 @@
+{
+  // this file is used by node-config to map a node-config (AppConfig)
+  //  hierarchy of constants to an environment variable
+  // Note that much of the environment variables mapped here existed for some time
+  //  without AppConfig, this file bridges the historical uses of those with the new
+  //  as we transition to AppConfig
+  "appConfig": {
+    // constants for search capability
+    "search": {
+      "providerEndpoint": "OpenSearchDomainEndpoint",
+      "index": "OpenSearchCveIndex",
+      // allows local development using containers that do not have SSL certs
+      "allowUnknownSslCerts": "OpenSearchAllowUnknownSslCerts"
+    },
+    // constants for testing node-config
+    // these values are only used to test node-config in AppConfig.test.int.ts
+    // DO NOT USE THIS FOR ANYTHING ELSE
+    "test": {
+      "appConfigTest": {
+        "test": "JEST_env_config_test"
+      }
+    }
+  }
+}

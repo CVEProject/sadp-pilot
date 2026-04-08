@@ -1,0 +1,22 @@
+{
+  // SADP configuration
+  //  NOTE for consistency, all values need to be strings for proper type when using .env overrides
+  "appConfig": {
+    "local": {
+      "cvesDirRoot": "./Published SADP Records"
+    },
+    // these variables are for working with CVEs with SADP information
+    "sadp": {
+      "deltaLog": {
+        "numLookback": 3
+      },
+      // the code reviews CVEs based on the jsonpath string, looking for matching values
+      "conditionalCveCopy": {
+        "jsonpath": "$.containers.adp[*].providerMetadata.shortName",
+        "matches": [
+          "*-SADP"
+        ]
+      }
+    }
+  }
+}

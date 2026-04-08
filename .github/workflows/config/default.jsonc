@@ -1,0 +1,34 @@
+{
+  // Default configuration
+  //  These values are overridable using other *.jsonc (e.g., prod.jsonc)
+  //    as well as using environment variables (e.g., in `.env`)
+  //    - Each configuration is mapped using custom-environment-variables.jsonc to enable environment varialbe overrides.
+  //    - For more information, see cve-core/src/adapters/config/AppConfig.ts
+  //  NOTE for consistency, all values need to be strings for proper type when using .env overrides
+  "appConfig": {
+    // constants for search capability
+    "search": {
+      // minimum versions for servers that are compatible with current code
+      "minServer": [
+        "elasticsearch:7.10.2",
+        "opensearch:2.10.0"
+      ],
+      // setting this to FALSE (highly recommended) requires an SSL cert to access the search server
+      // The only time this should be allowed to be true is when developing or testing
+      //   using containers that do not have SSL certs
+      "allowUnknownSslCerts": "FALSE",
+      "providerEndpoint": "<using config/default.jsonc>", // preference is to specify this in a (secret) environment variable on production platforms
+      "index": "<using config/default.jsonc>" // preference is to specify this in a (secret) environment variable on production platforms
+    },
+    "github": {
+      "cvelist": {
+        "cvesDirUrl": "https://raw.githubusercontent.com/CVEProject/cvelistV5/refs/heads/main/cves",
+        "deltalogUrl": "https://raw.githubusercontent.com/CVEProject/cvelistV5/refs/heads/main/cves/deltaLog.json"
+      }
+    },
+    "local": {
+      "tempDownloadDirRoot": "./tempDownloads",
+      "cvesDirRoot": "./cves"
+    }
+  }
+}
