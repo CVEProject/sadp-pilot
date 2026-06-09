@@ -14,16 +14,15 @@ As of 4/1/2026, the CVE SADP Pilot has entered the PRODUCTION phase of the pilot
 
 * [Published SADP Records](https://github.com/CVEProject/sadp-pilot/tree/main/Published%20SADP%20Records).  Records containing SADP content will be copied from the CVE List into this folder for easier identification.   The folder will be structured in the same manner as the CVE List, populated only by  CVE Records containing SADP content.
 
-Phase II is scheduled to run from April 1, 2026 until July 31, 2026.  This period will catch April and July quarterly update cycles and four monthly update cycles for the Suppliers. 
-
-After Phase II (i.e., August/2026) public feedback from the pilot will be reviewed and the "next steps" of the pilot will be considered.  
+Phase II began on April 1, 2026.  An end date of Phase II has not been been determined and will be based on ongoing reviews and feedback from the community.    
+After Phase II public feedback from the pilot will be reviewed and the "next steps" of the pilot will be considered.  
 
 ## Offering Feedback for the SADP Pilot
 
 There are multiple ways to offer feedback on the pilot:
 * Submit a [New Issue](https://github.com/CVEProject/sadp-pilot/issues/new) against this Github SADP Repository
 * Submit [a comment](https://medium.com/@cve_program/supplier-adp-pilot-cve-program-to-explore-benefits-of-supporting-vex-like-product-status-852587bc9546) in response to the SADP announcement blog
-* Submit a [CVE Request](https://cveform.mitre.org/) using the CVE Program CVE Request form (use the "Other" request type from the pull down menu)
+* Submit a [CVE Request](https://mitre.github.io/mitre-cve-roles/other/) to the CVE Program Secretariat
 
 ## Background
 
